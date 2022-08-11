@@ -11,14 +11,14 @@
 
     <div class="container mt-4">
 
-        <h1 class="text-center">Output CSV Form</h1>
+        <h1 class="text-center">Upload Price List CSV</h1>
 
       <form action="" method="post" id="upload_form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
 
         <div class="mb-3">
-            <input type="submit" class="btn btn-dark btn-block">
+            <input type="submit" class="btn btn-dark btn-block" value="upload">
         </div>
 
         <a href="{% url 'plc:output_csv_list' %}" class="btn btn-default btn-block" role="button">Cancel</a>

@@ -11,13 +11,13 @@
     <div class="container">
         <!--Section: Content-->
     <section class="text-center">
-        <h1 class="mt-3">{{ title }}s</h1>
+        <h1 class="mt-3">{{ title }}</h1>
         <hr class="mb-4">
 
     {% if user.is_authenticated and user.is_superuser %}
         <form action="{% url 'plc:output_csv_create' %}">
             <div class="mb-3">
-                <input class ="form-control form-horizontal btn btn-dark mb-4" type="submit" value="Add Output CSV">
+                <input class ="form-control form-horizontal btn btn-dark mb-4" type="submit" value="Create Output CSV">
             </div>
         </form>
     {% endif %}

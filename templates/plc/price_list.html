@@ -17,7 +17,7 @@
     {% if user.is_authenticated and user.is_superuser %}
         <form action="{% url 'plc:price_list_create' %}">
             <div class="mb-3">
-                <input class ="form-control form-horizontal btn btn-dark mb-4" type="submit" value="Add Price List">
+                <input class ="form-control form-horizontal btn btn-dark mb-4" type="submit" value="Upload Price List CSV">
             </div>
         </form>
     {% endif %}

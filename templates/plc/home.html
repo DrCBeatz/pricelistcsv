@@ -2,19 +2,14 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center mt-3">Pricelist CSV Converter</h1>
-
-
-
-    <form method="post" action="{% url 'plc:upload_csv' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-
-            <label class="form-label mb-1" for="customFile">Upload CSV file</label>
-            <input class="form-control mb-3" type="file" name="sentFile" id="customFile" />
-            <input class="btn btn-primary btn-block mb-3" type="submit" name="submit" value="Upload" />
-
-    </form>
-    <hr>
-    <a class="btn btn-dark btn-block" href="{% url 'plc:update_productlist_csv' %}">Update Product List</a>
+    <h1 class="text-center my-3">Pricelist CSV Converter</h1>
+    <hr class="mb-5">
+    <div class="mb-5">
+        <a class="btn btn-dark btn-block" href="{% url 'plc:product_list_create' %}">Upload Product List CSV</a>
     </div>
+
+    <div class="mb-5">
+        <a class="btn btn-dark btn-block" href="{% url 'plc:price_list_create' %}">Upload Price List CSV</a>
+    </div>
+</div>
 {% endblock %}
