@@ -1,0 +1,8 @@
+__pycache__
+*.swp
+*.sqlite3
+.env
+product_lists/*
+price_lists/*
+output_csvs/*
+plc/migrations/*

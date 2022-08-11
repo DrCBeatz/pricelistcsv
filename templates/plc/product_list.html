@@ -1,0 +1,93 @@
+{% extends 'menu.html' %}
+
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<!--Main layout-->
+<main class="mb-5">
+    <div class="container">
+        <!--Section: Content-->
+    <section class="text-center">
+        <h1 class="mt-3">{{ title }}s</h1>
+        <hr class="mb-4">
+
+    {% if user.is_authenticated and user.is_superuser %}
+        <form action="{% url 'plc:product_list_create' %}">
+            <div class="mb-3">
+                <input class ="form-control form-horizontal btn btn-dark mb-4" type="submit" value="Add Product List">
+            </div>
+        </form>
+    {% endif %}
+
+{% if product_list %}
+    {% for product in product_list %}
+        {% if forloop.first %}
+                <div class="row">
+            {% endif %}
+
+
+        <div class="mb-4">
+            <div class="card">
+
+              <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="text-muted">{{ product.file }}</p>
+                {% comment %}
+                <div class="mb-3">
+                    <a href="{% url 'plc:product_list_detail' product.id %}" alt="{{product}}" class="btn btn-dark btn-block">View Product List</a>
+                </div>
+                {% endcomment %}
+                <div class="mb-3">
+                    <a href="/{{product.file}}" alt="{{product.title}}" class="btn btn-dark btn-block">Download Product List CSV</a>
+                </div>
+                {% if user.is_authenticated and user.is_superuser %}
+                    <div class="mb-3">
+                        <a class="btn btn-block btn-primary" href="{% url 'plc:product_list_update' product.id %}">Edit Product List</i></a>
+                    </div>
+                    <div class="mb-3">
+                        <a class="btn btn-block btn-warning" href="{% url 'plc:product_list_delete' product.id %}">Delete Product List</a>
+                    </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {% comment %}
+        {% if forloop.counter|divisibleby:2 %}</div>
+    <div class="row fade-delay-1" data-mdb-toggle="animation" data-mdb-animation-start="onScroll" data-mdb-animation="fade-in">
+        {% endif %} {% if forloop.last %}</div>{% endif %}
+        {% endcomment %}
+    {% endfor %}
+
+{% else %}
+<h4>No Product Lists found</h4>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endif %}
+
+</section>
+
+
+</div>
+
+</main>
+{% endblock %}
+

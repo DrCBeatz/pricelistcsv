@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <title></title>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css?v=1234" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+
+    {% comment %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}"/>
+    {% endcomment %}
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}" defer></script>
+
+
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+    {% block navbar %} {% endblock %}
+        {% block welcome %} {% endblock %}
+
+        {% block messages %}
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-{% if msg.level_tag == 'error' %}danger{% else %}{{msg.level_tag}}{% endif %} fade fade-delay-1"
+                    role="alert">
+                    {% if msg.level_tag == "error" %}<i class="fas fa-times-circle me-3"></i>{% else %}<i
+                        class="fas fa-check-circle me-1"></i>{% endif %}{{msg.message}}
+                </div>
+        {% endfor %}
+        {% endif %}
+        {% endblock %} {% block content %} {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>

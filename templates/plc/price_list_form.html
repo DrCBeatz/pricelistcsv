@@ -1,0 +1,27 @@
+{% extends "menu.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head %}
+    {% comment %}
+        {{ form.media }}
+    {% endcomment %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-4">
+    <h1 class="text-center">Price List Form</h1>
+      <form action="" method="post" id="upload_form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <div class="mb-3">
+            <input type="submit" class="btn btn-dark btn-block">
+        </div>
+
+        <a href="{% url 'plc:price_list' %}" class="btn btn-default btn-block" role="button">Cancel</a>
+      </form>
+
+    </div>
+
+{% endblock %}

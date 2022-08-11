@@ -1,0 +1,95 @@
+{% extends 'menu.html' %}
+
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<!--Main layout-->
+<main class="mb-5">
+    <div class="container">
+        <!--Section: Content-->
+    <section class="text-center">
+        <h1 class="mt-3">{{ title }}s</h1>
+        <hr class="mb-4">
+
+    {% if user.is_authenticated and user.is_superuser %}
+        <form action="{% url 'plc:output_csv_create' %}">
+            <div class="mb-3">
+                <input class ="form-control form-horizontal btn btn-dark mb-4" type="submit" value="Add Output CSV">
+            </div>
+        </form>
+    {% endif %}
+
+{% if output_csv_list %}
+    {% for output_csv in output_csv_list %}
+        {% if forloop.first %}
+                <div class="row">
+            {% endif %}
+
+
+        <div class="mb-4">
+            <div class="card">
+
+              <div class="card-body">
+                <h5 class="card-title">{{output_csv.title}}</h5>
+                <p class="text-muted">{{output_csv.file}}</p>
+
+                {% comment %}
+                <div class="mb-3">
+                    <a href="{% url 'plc:output_csv_detail' output_csv.id %}" alt="{{output_csv}}" class="btn btn-dark btn-block">View Output Csv</a>
+                </div>
+                {% endcomment %}
+
+                <div class="mb-3">
+                    <a href="/{{output_csv.file}}" alt="{{output_csv.title}}" class="btn btn-dark btn-block">Download Output CSV</a>
+                </div>
+                {% if user.is_authenticated and user.is_superuser %}
+                    <div class="mb-3">
+                        <a class="btn btn-block btn-primary" href="{% url 'plc:output_csv_update' output_csv.id %}">Edit Output CSV</i></a>
+                    </div>
+                    <div class="mb-3">
+                        <a class="btn btn-block btn-warning" href="{% url 'plc:output_csv_delete' output_csv.id %}">Delete Output CSV</a>
+                    </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {% comment %}
+        {% if forloop.counter|divisibleby:2 %}</div>
+    <div class="row fade-delay-1" data-mdb-toggle="animation" data-mdb-animation-start="onScroll" data-mdb-animation="fade-in">
+        {% endif %} {% if forloop.last %}</div>{% endif %}
+        {% endcomment %}
+    {% endfor %}
+
+{% else %}
+<h4>No Output CSVs found</h4>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endif %}
+
+</section>
+
+
+</div>
+
+</main>
+{% endblock %}
+

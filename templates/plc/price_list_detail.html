@@ -1,0 +1,37 @@
+{% extends 'menu.html' %}
+
+{% load static %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block content %}
+
+<main class="container mb-5">
+
+    <section class="text-center mb-4">
+
+        <h1 class="mt-3">{{ title }}</h1>
+
+        <hr class="mb-3">
+
+        {% if user.is_authenticated and user.is_superuser %}
+            <a class="btn btn-block btn-info mb-3" href="{% url 'plc:price_list_update' price_list.id %}">Edit Price List</i></a>
+            <a class="btn btn-block btn-warning mb-3" href="{% url 'plc:price_list_delete' price_list.id %}">Delete Price List</a>
+        {% endif %}
+
+
+
+    </section>
+
+    <a class="btn btn-block btn-dark mb-3" href="/{{ price_list.file }}">View CSV</a>
+
+    <div class='pt-2 mb-2'>
+        <a class="btn btn-block btn-info" href="{% url 'plc:price_list' %}">Back to Price Lists</i></a>
+    </div>
+
+</main>
+
+{% endblock %}

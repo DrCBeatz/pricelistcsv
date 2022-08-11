@@ -1,0 +1,47 @@
+{% extends "base_bootstrap.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block navbar %}
+<!--Main Navigation-->
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="{% url 'plc:home' %}"> Price List CSV Converter</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% url 'plc:home' as home_url %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == home_url %}active{% endif %}" aria-current="page" href="{% url 'plc:home' %}">Home</a>
+        </li>
+        {% url 'plc:product_list' as product_list_url %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == product_list_url %}active{% endif %}" href="{% url 'plc:product_list' %}">Product Lists</a>
+        </li>
+        {% url 'plc:price_list' as price_list_url %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == price_list_url %}active{% endif %}" href="{% url 'plc:price_list' %}">Price Lists</a>
+        </li>
+        {% url 'plc:output_csv_list' as output_csv_list_url %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == output_csv_list_url %}active{% endif %}" href="{% url 'plc:output_csv_list' %}">Output CSVs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
