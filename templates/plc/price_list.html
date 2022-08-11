@@ -35,9 +35,9 @@
               <div class="card-body">
                 <h5 class="card-title">{{price.title}}</h5>
                 <p class="text-muted">{{ price.file }}</p>
-                {% comment %}
-                    <a href="{% url 'plc:price_list_detail' price.id %}" alt="{{price}}" class="btn btn-dark btn-block">View Price List</a>
-                {% endcomment %}
+
+                    <a href="{% url 'plc:price_list_detail' price.id %}" alt="{{price}}" class="btn btn-dark btn-block mb-3">View Price List</a>
+
                 <div class="mb-3">
                     <a href="/{{price.file}}" alt="{{price.title}}" class="btn btn-dark btn-block">Download Price List CSV</a>
                 </div>

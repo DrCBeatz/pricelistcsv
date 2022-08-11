@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from plc.forms import CreateProductListForm, CreatePriceListForm, CreateOutputCsvForm
 import pandas as pd
 
+TABLE_CLASSES = 'table table-responsive table-bordered table-hover table-sm table-group=divider table-striped table-light'
 
 class HomeView(TemplateView):
     template_name = "plc/home.html"
@@ -25,7 +26,9 @@ class ProductListDetailView(DetailView):
     template_name = "plc/product_list_detail.html"
     def get(self, request, pk):
         product_list = ProductList.objects.get(id=pk)
-        context = { 'product_list': product_list, 'title': product_list.title }
+        product_list_table = pd.read_csv(product_list.file)
+        html_data = product_list_table.to_html(classes=TABLE_CLASSES, index=False)
+        context = { 'product_list': product_list, 'title': product_list.title, 'html_data': html_data }
         return render(request, self.template_name, context)
 
 class ProductListCreateView(LoginRequiredMixin, View):
@@ -87,7 +90,9 @@ class PriceListDetailView(DetailView):
     template_name = "plc/price_list_detail.html"
     def get(self, request, pk):
         price_list = PriceList.objects.get(id=pk)
-        context = { 'price_list': price_list, 'title': price_list.title }
+        price_list_table = pd.read_csv(price_list.file)
+        html_data = price_list_table.to_html(classes=TABLE_CLASSES, index=False)
+        context = { 'price_list': price_list, 'title': price_list.title, 'html_data': html_data }
         return render(request, self.template_name, context)
 
 class PriceListCreateView(LoginRequiredMixin, View):
@@ -164,13 +169,19 @@ class OutputCsvDetailView(DetailView):
 
         try:
             output_file = 'output_csvs/output.csv'
-            product_list.to_csv(output_file)
+            product_list.to_csv(output_file, index=False)
             output_csv.file = output_file
             output_csv.save()
         except:
             raise RuntimeError("Couldn't generate output .csv file")
 
-        context = { 'output_csv': output_csv, 'title': output_csv.title }
+        output_csv_table = pd.read_csv(output_csv.file)
+
+        output_csv_table.reset_index(drop=True, inplace=True)
+
+        html_data = output_csv_table.to_html(classes=TABLE_CLASSES, index=False)
+
+        context = { 'output_csv': output_csv, 'title': output_csv.title, 'html_data': html_data }
         return render(request, self.template_name, context)
 
 
@@ -209,7 +220,7 @@ class OutputCsvCreateView(LoginRequiredMixin, View):
 
         try:
             output_file = 'output_csvs/output.csv'
-            product_list.to_csv(output_file)
+            product_list.to_csv(output_file, index=False)
             output_csv.file = output_file
             output_csv.save()
         except:

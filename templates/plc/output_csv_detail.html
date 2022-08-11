@@ -25,6 +25,10 @@
 
 
     </section>
+    <div class="table-responsive">
+        {{ target_data }}
+        {{ html_data|safe }}
+    </div>
 
     <a class="btn btn-block btn-dark mb-3" href="/{{ output_csv.file }}">View Output CSV</a>
 

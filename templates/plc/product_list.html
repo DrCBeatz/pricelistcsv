@@ -35,11 +35,11 @@
               <div class="card-body">
                 <h5 class="card-title">{{product.title}}</h5>
                 <p class="text-muted">{{ product.file }}</p>
-                {% comment %}
+
                 <div class="mb-3">
                     <a href="{% url 'plc:product_list_detail' product.id %}" alt="{{product}}" class="btn btn-dark btn-block">View Product List</a>
                 </div>
-                {% endcomment %}
+
                 <div class="mb-3">
                     <a href="/{{product.file}}" alt="{{product.title}}" class="btn btn-dark btn-block">Download Product List CSV</a>
                 </div>

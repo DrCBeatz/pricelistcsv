@@ -36,11 +36,11 @@
                 <h5 class="card-title">{{output_csv.title}}</h5>
                 <p class="text-muted">{{output_csv.file}}</p>
 
-                {% comment %}
+
                 <div class="mb-3">
                     <a href="{% url 'plc:output_csv_detail' output_csv.id %}" alt="{{output_csv}}" class="btn btn-dark btn-block">View Output Csv</a>
                 </div>
-                {% endcomment %}
+
 
                 <div class="mb-3">
                     <a href="/{{output_csv.file}}" alt="{{output_csv.title}}" class="btn btn-dark btn-block">Download Output CSV</a>
