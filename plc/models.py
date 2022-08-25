@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.core.validators import MinLengthValidator
 
 class ProductList(models.Model):
@@ -6,6 +7,9 @@ class ProductList(models.Model):
             validators=[MinLengthValidator(2, "Title must be greater than 2 characters")]
     )
     file = models.FileField(upload_to='product_lists')
+    column_names = ArrayField(
+       models.CharField(max_length=512), blank=True, null=True
+    )
     def __str__(self):
         return self.title
 
@@ -14,6 +18,9 @@ class PriceList(models.Model):
             validators=[MinLengthValidator(2, "Title must be greater than 2 characters")]
     )
     file = models.FileField(upload_to='price_lists')
+    column_names = ArrayField(
+       models.CharField(max_length=512), blank=True, null=True
+    )
     def __str__(self):
         return self.title
 
