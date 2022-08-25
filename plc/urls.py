@@ -31,4 +31,8 @@ urlpatterns = [
     path('output_csv/<int:pk>/update', views.OutputCsvUpdateView.as_view(success_url=reverse_lazy('plc:output_csv_list')), name='output_csv_update'),
     path('output_csv/<int:pk>/delete', views.OutputCsvDeleteView.as_view(success_url=reverse_lazy('plc:output_csv_list')), name='output_csv_delete'),
 
+    path('return_product_columns', views.return_product_columns.as_view(), name='return_product_columns'),
+    path('return_price_columns', views.return_price_columns.as_view(), name='return_price_columns'),
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
