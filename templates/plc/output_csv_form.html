@@ -26,4 +26,47 @@
 
     </div>
 
+    <script>
+        product_list_select = document.getElementById("id_product_list");
+
+        price_list_select = document.getElementById("id_price_list")
+
+
+        product_list_select.addEventListener('change', (event) => {
+            let product_list_select_value = product_list_select.value;
+            console.log(product_list_select_value);
+            let product_list_column_names = {};
+
+        fetch(`https://pricelistcsv.pythonanywhere.com/return_product_columns/${product_list_select_value}`)
+            .then((response) => response.json())
+            .then(
+                    (data) => {
+                        product_list_column_names = JSON.parse((data[0].fields.column_names));
+                        console.log(product_list_column_names);
+                    }
+
+                );
+
+        });
+
+        price_list_select.addEventListener('change', (event) => {
+            let price_list_select_value = price_list_select.value;
+            console.log(price_list_select_value);
+            let price_list_column_names = {};
+
+        fetch(`https://pricelistcsv.pythonanywhere.com/return_price_columns/${price_list_select_value}`)
+            .then((response) => response.json())
+            .then(
+                    (data) => {
+                        price_list_column_names = JSON.parse((data[0].fields.column_names));
+                        console.log(price_list_column_names);
+                    }
+
+                );
+
+        });
+
+
+    </script>
+
 {% endblock %}
