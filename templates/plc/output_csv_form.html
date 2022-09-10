@@ -32,9 +32,9 @@
         price_list_select = document.getElementById("id_price_list")
 
 
-        product_list_select.addEventListener('change', (event) => {
+        const updateProductSelect = () => {
             let product_list_select_value = product_list_select.value;
-            console.log(product_list_select_value);
+
             let product_list_column_names = {};
 
         fetch(`https://pricelistcsv.pythonanywhere.com/return_product_columns/${product_list_select_value}`)
@@ -42,14 +42,42 @@
             .then(
                     (data) => {
                         product_list_column_names = JSON.parse((data[0].fields.column_names));
-                        console.log(product_list_column_names);
+
+                        let product_list_search_field = document.getElementById("id_product_list_search_field");
+                        let product_list_replace_field = document.getElementById("id_product_list_replace_field");
+                        for (a in product_list_search_field.options) { product_list_search_field.options.remove(0); }
+                        for (a in product_list_replace_field.options) { product_list_replace_field.options.remove(0); }
+
+
+                        i = 0,
+                        il = product_list_column_names.length;
+
+                        try {
+                            for (; i < il; i += 1) {
+                                let option = document.createElement('option');
+                                option.setAttribute('value', product_list_column_names[i]);
+                                option.appendChild(document.createTextNode(product_list_column_names[i]));
+                                product_list_search_field.appendChild(option);
+
+                                let option2 = document.createElement('option');
+                                option2.setAttribute('value', product_list_column_names[i]);
+                                option2.appendChild(document.createTextNode(product_list_column_names[i]));
+                                product_list_replace_field.appendChild(option2);
+                            }
+
+                        }
+                        catch {
+                            console.log('oops');
+                        }
+
+
                     }
 
                 );
 
-        });
+        }
 
-        price_list_select.addEventListener('change', (event) => {
+        const updatePriceSelect = () => {
             let price_list_select_value = price_list_select.value;
             console.log(price_list_select_value);
             let price_list_column_names = {};
@@ -59,12 +87,58 @@
             .then(
                     (data) => {
                         price_list_column_names = JSON.parse((data[0].fields.column_names));
-                        console.log(price_list_column_names);
+
+                        let price_list_search_field = document.getElementById("id_price_list_search_field");
+                        let price_list_replace_field = document.getElementById("id_price_list_replace_field");
+
+                        for (a in price_list_search_field.options) { price_list_search_field.options.remove(0); }
+                        for (a in price_list_replace_field.options) { price_list_replace_field.options.remove(0); }
+
+
+                        i = 0,
+                        il = price_list_column_names.length;
+
+                        try {
+                            for (; i < il; i += 1) {
+                                let option = document.createElement('option');
+                                option.setAttribute('value', price_list_column_names[i]);
+                                option.appendChild(document.createTextNode(price_list_column_names[i]));
+                                price_list_search_field.appendChild(option);
+
+                                let option2 = document.createElement('option');
+                                option2.setAttribute('value', price_list_column_names[i]);
+                                option2.appendChild(document.createTextNode(price_list_column_names[i]));
+                                price_list_replace_field.appendChild(option2);
+                            }
+
+                        }
+                        catch {
+                            console.log('oops');
+                        }
+
                     }
 
                 );
 
-        });
+        }
+
+        try {
+            updateProductSelect();
+        }
+        catch {
+            console.log("Couldn't update product select fields")
+        }
+
+        try {
+            updatePriceSelect();
+        }
+        catch {
+            console.log("Couldn't update product select fields")
+        }
+
+        product_list_select.addEventListener('change', updateProductSelect );
+
+        price_list_select.addEventListener('change', updatePriceSelect );
 
 
     </script>
