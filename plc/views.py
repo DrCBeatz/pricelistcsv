@@ -63,6 +63,9 @@ class ProductListCreateView(LoginRequiredMixin, View):
             ctx = {'form': form}
             return render(request, self.template_name, ctx)
         form.save()
+        product_list_df = pd.read_csv(form.instance.file)
+        form.instance.column_names = product_list_df.columns.tolist();
+        form.save()
         return redirect(self.success_url)
 
 class ProductListUpdateView(LoginRequiredMixin, View):
@@ -83,6 +86,9 @@ class ProductListUpdateView(LoginRequiredMixin, View):
             ctx = {'form': form}
             return render(request, self.template_name, ctx)
 
+        product_list.save()
+        product_list_df = pd.read_csv(product_list.file)
+        product_list.column_names = product_list_df.columns.tolist();
         product_list.save()
 
         return redirect(self.success_url)
@@ -127,6 +133,9 @@ class PriceListCreateView(LoginRequiredMixin, View):
             ctx = {'form': form}
             return render(request, self.template_name, ctx)
         form.save()
+        price_list_df = pd.read_csv(form.instance.file)
+        form.instance.column_names = price_list_df.columns.tolist();
+        form.save()
         return redirect(self.success_url)
 
 class PriceListUpdateView(LoginRequiredMixin, View):
@@ -147,6 +156,9 @@ class PriceListUpdateView(LoginRequiredMixin, View):
             ctx = {'form': form}
             return render(request, self.template_name, ctx)
 
+        price_list.save()
+        price_list_df = pd.read_csv(price_list.file)
+        price_list.column_names = price_list_df.columns.tolist();
         price_list.save()
 
         return redirect(self.success_url)
