@@ -13,6 +13,11 @@
 
         <h1 class="text-center">Create Output CSV</h1>
 
+        {{ form.instance.product_list_search_field|json_script:"json_product_list_search_field" }}
+        {{ form.instance.product_list_replace_field|json_script:"json_product_list_replace_field" }}
+        {{ form.instance.price_list_search_field|json_script:"json_price_list_search_field" }}
+        {{ form.instance.price_list_replace_field|json_script:"json_price_list_replace_field" }}
+
       <form action="" method="post" id="upload_form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
@@ -31,6 +36,10 @@
 
         price_list_select = document.getElementById("id_price_list")
 
+        let product_list_search_value = JSON.parse(document.getElementById('json_product_list_search_field').textContent);
+        let product_list_replace_value = JSON.parse(document.getElementById('json_product_list_replace_field').textContent);
+        let price_list_search_value = JSON.parse(document.getElementById('json_price_list_search_field').textContent);
+        let price_list_replace_value = JSON.parse(document.getElementById('json_price_list_replace_field').textContent);
 
         const updateProductSelect = () => {
             let product_list_select_value = product_list_select.value;
@@ -57,17 +66,29 @@
                                 let option = document.createElement('option');
                                 option.setAttribute('value', product_list_column_names[i]);
                                 option.appendChild(document.createTextNode(product_list_column_names[i]));
+
                                 product_list_search_field.appendChild(option);
+
+                                if (option.value == product_list_search_value) {
+                                    let o = product_list_search_field.options[i];
+                                    o.selected = true;
+                                }
+
 
                                 let option2 = document.createElement('option');
                                 option2.setAttribute('value', product_list_column_names[i]);
                                 option2.appendChild(document.createTextNode(product_list_column_names[i]));
                                 product_list_replace_field.appendChild(option2);
+
+                                if (option2.value == product_list_replace_value) {
+                                    let o2 = product_list_replace_field.options[i];
+                                    o2.selected = true;
+                                }
                             }
 
                         }
                         catch {
-                            console.log('oops');
+                            console.log('Cannot update product list column names');
                         }
 
 
@@ -79,7 +100,6 @@
 
         const updatePriceSelect = () => {
             let price_list_select_value = price_list_select.value;
-            console.log(price_list_select_value);
             let price_list_column_names = {};
 
         fetch(`https://pricelistcsv.pythonanywhere.com/return_price_columns/${price_list_select_value}`)
@@ -105,15 +125,25 @@
                                 option.appendChild(document.createTextNode(price_list_column_names[i]));
                                 price_list_search_field.appendChild(option);
 
+                                if (option.value == price_list_search_value) {
+                                    let o = price_list_search_field.options[i];
+                                    o.selected = true;
+                                }
+
                                 let option2 = document.createElement('option');
                                 option2.setAttribute('value', price_list_column_names[i]);
                                 option2.appendChild(document.createTextNode(price_list_column_names[i]));
                                 price_list_replace_field.appendChild(option2);
+
+                                if (option2.value == price_list_replace_value) {
+                                    let o2 = price_list_replace_field.options[i];
+                                    o2.selected = true;
+                                }
                             }
 
                         }
                         catch {
-                            console.log('oops');
+                            console.log('Cannot update price list product names');
                         }
 
                     }
