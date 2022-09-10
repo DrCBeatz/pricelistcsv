@@ -8,16 +8,20 @@ from plc.forms import CreateProductListForm, CreatePriceListForm, CreateOutputCs
 import pandas as pd
 from django.core import serializers
 
-TABLE_CLASSES = 'table table-responsive table-bordered table-hover table-sm table-group=divider table-striped table-light'
+TABLE_CLASSES = 'table table-responsive table-bordered table-hover table-sm table-group-divider table-striped table-light'
 
 class return_product_columns(LoginRequiredMixin, View) :
-    def get(self, request):
-        data = serializers.serialize("json", ProductList.objects.all(), fields=('column_names'))
+    def get(self, request, pk):
+        product_list = ProductList.objects.get(pk=pk)
+        data = serializers.serialize('python', [product_list], ensure_ascii=False)
+        # data = serializers.serialize("json", ProductList.objects.get(pk=pk), fields=('column_names'))
         return JsonResponse(data, safe=False)
 
 class return_price_columns(LoginRequiredMixin, View) :
-    def get(self, request):
-        data = serializers.serialize("json", PriceList.objects.all(), fields=('column_names'))
+    def get(self, request, pk):
+        price_list = PriceList.objects.get(pk=pk)
+        data = serializers.serialize('python', [price_list], ensure_ascii=False)
+        # data = serializers.serialize("json", PriceList.objects.all(), fields=('column_names'))
         return JsonResponse(data, safe=False)
 
 class HomeView(TemplateView):
