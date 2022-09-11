@@ -42,6 +42,11 @@
         let price_list_replace_value = JSON.parse(document.getElementById('json_price_list_replace_field').textContent);
 
         const updateProductSelect = () => {
+
+            if ( !product_list_select.value ) {
+                return;
+            }
+
             let product_list_select_value = product_list_select.value;
 
             let product_list_column_names = {};
@@ -99,6 +104,9 @@
         }
 
         const updatePriceSelect = () => {
+            if ( !price_list_select.value ) {
+                return;
+            }
             let price_list_select_value = price_list_select.value;
             let price_list_column_names = {};
 

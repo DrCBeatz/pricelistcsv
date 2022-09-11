@@ -14,14 +14,12 @@ class return_product_columns(LoginRequiredMixin, View) :
     def get(self, request, pk):
         product_list = ProductList.objects.get(pk=pk)
         data = serializers.serialize('python', [product_list], ensure_ascii=False)
-        # data = serializers.serialize("json", ProductList.objects.get(pk=pk), fields=('column_names'))
         return JsonResponse(data, safe=False)
 
 class return_price_columns(LoginRequiredMixin, View) :
     def get(self, request, pk):
         price_list = PriceList.objects.get(pk=pk)
         data = serializers.serialize('python', [price_list], ensure_ascii=False)
-        # data = serializers.serialize("json", PriceList.objects.all(), fields=('column_names'))
         return JsonResponse(data, safe=False)
 
 class HomeView(TemplateView):
@@ -302,41 +300,3 @@ class OutputCsvUpdateView(LoginRequiredMixin, View):
 
 class OutputCsvDeleteView(LoginRequiredMixin, DeleteView):
     model = OutputCsv
-
-
-
-def upload_csv(request):
-    uploaded_file = request.FILES['sentFile']
-    product_list = pd.read_csv(uploaded_file)
-    product_list.to_csv(uploaded_file.name)
-    return redirect('plc:home')
-
-
-def update_productlist_csv(request):
-
-    pass
-    return redirect('plc:home')
-
-def update_productlist(product_list, price_list, product_list_search_field, price_list_search_field, product_list_replace_field, price_list_replace_field, output_filename):
-
-    try:
-        product_list = pd.read_csv(PRODUCT_LIST)
-    except:
-        raise RuntimeError("Couldn't load product list .csv")
-
-    try:
-        price_list = pd.read_csv(PRICE_LIST)
-    except:
-        raise RuntimeError("Couldn't load price list .csv")
-
-    try:
-        for _, price_list_row in price_list.iterrows():
-            product_list.loc[product_list[PRODUCT_LIST_SEARCH_FIELD] == price_list_row[PRICE_LIST_SEARCH_FIELD], PRODUCT_LIST_REPLACE_FIELD] = price_list_row[PRICE_LIST_REPLACE_FIELD]
-    except:
-        raise RuntimeError("Couldn't update product list")
-
-    try:
-        product_list.to_csv(OUTPUT_FILENAME)
-    except:
-        raise RuntimeError("Couldn't generate output .csv file")
-    return

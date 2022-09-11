@@ -3,15 +3,9 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
-# Function views
-#     1. Add an import:  from my_app import views
-#     2. Add a URL to urlpatterns:  path('', views.home, name='home')
-
 app_name='plc'
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
-    path('upload_csv', views.upload_csv, name='upload_csv'),
-    path('update_productlist_csv', views.update_productlist_csv, name='update_productlist_csv'),
 
     path('product_list/', views.ProductListView.as_view(), name='product_list'),
     path('product_list/create', views.ProductListCreateView.as_view(success_url=reverse_lazy('plc:product_list')), name='product_list_create'),
@@ -33,6 +27,4 @@ urlpatterns = [
 
     path('return_product_columns/<int:pk>', views.return_product_columns.as_view(), name='return_product_columns'),
     path('return_price_columns/<int:pk>', views.return_price_columns.as_view(), name='return_price_columns'),
-
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
