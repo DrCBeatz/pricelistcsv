@@ -7,6 +7,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from plc.forms import CreateProductListForm, CreatePriceListForm, CreateOutputCsvForm
 import pandas as pd
 from django.core import serializers
+import math
+
+def ceil(x, s):
+    return s * math.ceil(float(x)/s)
 
 TABLE_CLASSES = 'table table-responsive table-bordered table-hover table-sm table-group-divider table-striped table-light'
 

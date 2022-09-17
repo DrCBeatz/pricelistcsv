@@ -2,6 +2,11 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block head %}
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
     {% comment %}
         {{ form.media }}
     {% endcomment %}
@@ -9,7 +14,7 @@
 
 {% block content %}
 
-    <div class="container mt-4">
+    <div class="container my-4">
 
         <h1 class="text-center">Create Output CSV</h1>
 
@@ -32,9 +37,32 @@
     </div>
 
     <script>
-        product_list_select = document.getElementById("id_product_list");
+        const product_list_select = document.getElementById("id_product_list");
+        const price_list_select = document.getElementById("id_price_list")
 
-        price_list_select = document.getElementById("id_price_list")
+        const calculate_discount_check = document.getElementById("id_calculate_discount")
+        const discount_code_div = document.getElementById("div_id_discount_code")
+        const price_discount_div = document.getElementById("div_id_price_discount")
+
+        if (!calculate_discount_check.checked) {
+            discount_code_div.classList.add("hide");
+            price_discount_div.classList.add("hide");
+        }
+
+        const toggleDiscountFields = () => {
+            if (!calculate_discount_check.checked) {
+                discount_code_div.classList.add("hide");
+                price_discount_div.classList.add("hide");
+            }
+            else {
+                discount_code_div.classList.remove("hide");
+                price_discount_div.classList.remove("hide");
+            }
+        }
+
+        calculate_discount_check.addEventListener('change', toggleDiscountFields)
+
+
 
         let product_list_search_value = JSON.parse(document.getElementById('json_product_list_search_field').textContent);
         let product_list_replace_value = JSON.parse(document.getElementById('json_product_list_replace_field').textContent);
