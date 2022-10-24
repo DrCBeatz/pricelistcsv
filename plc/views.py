@@ -66,7 +66,15 @@ class ProductListCreateView(LoginRequiredMixin, View):
             return render(request, self.template_name, ctx)
         form.save()
         product_list_df = pd.read_csv(form.instance.file)
-        form.instance.column_names = product_list_df.columns.tolist();
+
+        # strip whitespace from beginning and end of column_names list items
+
+        # column_names = product_list_df.columns.tolist()
+        # column_names_stripped = [column_name.strip(' ') for column_name in column_names]
+        # form.instance.column_names = column_names_stripped
+
+        form.instance.column_names = product_list_df.columns.tolist()
+
         form.save()
         return redirect(self.success_url)
 
