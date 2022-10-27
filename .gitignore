@@ -7,3 +7,6 @@ price_lists/*
 output_csvs/*
 plc/migrations/*
 *.csv
+*.lbx
+*.xml
+*.bmp
