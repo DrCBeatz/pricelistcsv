@@ -1,8 +1,8 @@
 import zlib
 import zipfile
 
-# def compress(file_names, output_label):
-def compress(file_names):
+def compress(file_names, output_label):
+# def compress(file_names):
 
     path = ''
 
@@ -11,8 +11,8 @@ def compress(file_names):
     compression = zipfile.ZIP_DEFLATED
 
     # create the zip file first parameter path/name, second mode
-    # zf = zipfile.ZipFile(output_label, mode="w")
-    zf = zipfile.ZipFile("my_label.lbx", mode="w")
+    zf = zipfile.ZipFile(output_label, mode="w")
+    # zf = zipfile.ZipFile("my_label.lbx", mode="w")
     try:
         for file_name in file_names:
             # Add file to the zip file
