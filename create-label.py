@@ -10,9 +10,9 @@ def replace_file_text(string1, string2):
             print(line.replace(string1, string2), end='')
     return
 
-df = pd.read_csv('products_export (30).csv', dtype={'Variant SKU':str, 'Variant Barcode':str})
+df = pd.read_csv('products_export (27).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
 
-sale = True
+sale = False
 if sale == False:
     source_file = 'template_reg.xml'
 else:
@@ -32,7 +32,7 @@ def main():
     replace_file_text('[VENDOR]', df.iloc[i]['Vendor'])
     replace_file_text(title_string, new_title)
     if sale:
-        replace_file_text('[reg-pr]', str(df.iloc[i]['Variant Compare At Price']))
+        replace_file_text('[reg-pr]',str(df.iloc[i]['Variant Compare At Price']))
         replace_file_text('[sale-pr]', str(df.iloc[i]['Variant Price']))
     else:
         replace_file_text('[reg-pr]', str(df.iloc[i]['Variant Price']))

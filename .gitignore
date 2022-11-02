@@ -10,3 +10,4 @@ plc/migrations/*
 *.lbx
 *.xml
 *.bmp
+*.xml.bak
