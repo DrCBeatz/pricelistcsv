@@ -3,7 +3,7 @@ def main():
     import pandas as pd
     import numpy as np
 
-    product_list = 'products_export (23).csv'
+    product_list = 'products_export (37).csv'
     df = pd.read_csv(product_list, dtype={'Variant SKU':str, 'Variant Barcode':str})
 
     df['Title'] = np.where(df['Title'].notna(), "Unavailable - " + df['Title'],  df['Title'])

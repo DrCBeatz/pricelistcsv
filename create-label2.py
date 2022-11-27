@@ -12,7 +12,7 @@ def replace_file_text(string1, string2):
             print(line.replace(string1, string2), end='')
     return
 
-df = pd.read_csv('products_export (29).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
+df = pd.read_csv('products_export (42).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
 
 sale = False
 
@@ -43,7 +43,7 @@ def main():
             else:
                 replace_file_text('[reg-pr]', str(df.iloc[i]['Variant Price']))
             replace_file_text('010101010101', str(df.iloc[i]['Variant Barcode']))
-            upc_length = len(df.iloc[i]['Variant Barcode'])
+            upc_length = len(str(df.iloc[i]['Variant Barcode']))
             replace_file_text('lengths="12"', f'lengths="{str(upc_length)}"')
 
             compress(lbx_files, f'my_label{i}.lbx')
