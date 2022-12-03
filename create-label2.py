@@ -12,9 +12,9 @@ def replace_file_text(string1, string2):
             print(line.replace(string1, string2), end='')
     return
 
-df = pd.read_csv('products_export (42).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
+df = pd.read_csv('products_export (46).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
 
-sale = False
+sale = True
 
 
 lbx_files = ['label.xml', 'prop.xml', 'Object0.bmp']
