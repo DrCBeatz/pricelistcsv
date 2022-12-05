@@ -11,3 +11,4 @@ plc/migrations/*
 *.xml
 *.bmp
 *.xml.bak
+*.zip
