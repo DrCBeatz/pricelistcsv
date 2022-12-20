@@ -3,7 +3,7 @@ import shutil
 import pandas as pd
 import os
 
-input_file = 'products4.csv'
+input_file = 'products5.csv'
 output_file = 'products_imgs.zip'
 
 df = pd.read_csv(input_file)

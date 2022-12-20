@@ -12,3 +12,4 @@ plc/migrations/*
 *.bmp
 *.xml.bak
 *.zip
+myazurecredentials.json

@@ -1,0 +1,370 @@
+{
+  "analyzeResult": {
+    "modelVersion": "2022-04-30",
+    "readResults": [
+      {
+        "angle": -6.6434,
+        "height": 1127,
+        "lines": [
+          {
+            "appearance": {
+              "style": {
+                "confidence": 0.849,
+                "name": "other"
+              }
+            },
+            "boundingBox": [
+              368,
+              139,
+              1496,
+              0,
+              1521,
+              228,
+              389,
+              385
+            ],
+            "text": "Enter to Win!",
+            "words": [
+              {
+                "boundingBox": [
+                  368,
+                  138,
+                  853,
+                  100,
+                  875,
+                  318,
+                  390,
+                  386
+                ],
+                "confidence": 0.991,
+                "text": "Enter"
+              },
+              {
+                "boundingBox": [
+                  902,
+                  93,
+                  1121,
+                  63,
+                  1143,
+                  279,
+                  924,
+                  311
+                ],
+                "confidence": 0.955,
+                "text": "to"
+              },
+              {
+                "boundingBox": [
+                  1169,
+                  55,
+                  1498,
+                  0,
+                  1520,
+                  225,
+                  1191,
+                  272
+                ],
+                "confidence": 0.615,
+                "text": "Win!"
+              }
+            ]
+          },
+          {
+            "appearance": {
+              "style": {
+                "confidence": 0.972,
+                "name": "other"
+              }
+            },
+            "boundingBox": [
+              1715,
+              90,
+              1815,
+              92,
+              1815,
+              139,
+              1712,
+              139
+            ],
+            "text": "DJ s",
+            "words": [
+              {
+                "boundingBox": [
+                  1712,
+                  90,
+                  1776,
+                  91,
+                  1775,
+                  140,
+                  1712,
+                  139
+                ],
+                "confidence": 0.998,
+                "text": "DJ"
+              },
+              {
+                "boundingBox": [
+                  1790,
+                  91,
+                  1813,
+                  91,
+                  1813,
+                  140,
+                  1789,
+                  140
+                ],
+                "confidence": 0.972,
+                "text": "s"
+              }
+            ]
+          },
+          {
+            "appearance": {
+              "style": {
+                "confidence": 1,
+                "name": "handwriting"
+              }
+            },
+            "boundingBox": [
+              216,
+              421,
+              1246,
+              286,
+              1269,
+              467,
+              229,
+              573
+            ],
+            "text": "NAME: Sabrina Collins",
+            "words": [
+              {
+                "boundingBox": [
+                  217,
+                  438,
+                  435,
+                  418,
+                  448,
+                  564,
+                  225,
+                  573
+                ],
+                "confidence": 0.997,
+                "text": "NAME:"
+              },
+              {
+                "boundingBox": [
+                  465,
+                  415,
+                  863,
+                  360,
+                  885,
+                  521,
+                  479,
+                  562
+                ],
+                "confidence": 0.885,
+                "text": "Sabrina"
+              },
+              {
+                "boundingBox": [
+                  893,
+                  355,
+                  1234,
+                  287,
+                  1264,
+                  458,
+                  916,
+                  517
+                ],
+                "confidence": 0.677,
+                "text": "Collins"
+              }
+            ]
+          },
+          {
+            "appearance": {
+              "style": {
+                "confidence": 0.982,
+                "name": "handwriting"
+              }
+            },
+            "boundingBox": [
+              214,
+              676,
+              1679,
+              505,
+              1695,
+              609,
+              220,
+              802
+            ],
+            "text": "EMAIL: sacollins 1978@gmail.com",
+            "words": [
+              {
+                "boundingBox": [
+                  214,
+                  693,
+                  469,
+                  649,
+                  476,
+                  761,
+                  221,
+                  803
+                ],
+                "confidence": 0.993,
+                "text": "EMAIL:"
+              },
+              {
+                "boundingBox": [
+                  499,
+                  644,
+                  932,
+                  581,
+                  942,
+                  692,
+                  507,
+                  756
+                ],
+                "confidence": 0.969,
+                "text": "sacollins"
+              },
+              {
+                "boundingBox": [
+                  953,
+                  579,
+                  1665,
+                  507,
+                  1679,
+                  609,
+                  963,
+                  689
+                ],
+                "confidence": 0.798,
+                "text": "1978@gmail.com"
+              }
+            ]
+          },
+          {
+            "appearance": {
+              "style": {
+                "confidence": 0.936,
+                "name": "handwriting"
+              }
+            },
+            "boundingBox": [
+              234,
+              912,
+              1292,
+              752,
+              1305,
+              878,
+              253,
+              1049
+            ],
+            "text": "PHONE: 613-803-0436",
+            "words": [
+              {
+                "boundingBox": [
+                  235,
+                  919,
+                  497,
+                  872,
+                  514,
+                  1008,
+                  254,
+                  1049
+                ],
+                "confidence": 0.997,
+                "text": "PHONE:"
+              },
+              {
+                "boundingBox": [
+                  569,
+                  859,
+                  1287,
+                  753,
+                  1298,
+                  884,
+                  586,
+                  996
+                ],
+                "confidence": 0.988,
+                "text": "613-803-0436"
+              }
+            ]
+          },
+          {
+            "appearance": {
+              "style": {
+                "confidence": 0.972,
+                "name": "other"
+              }
+            },
+            "boundingBox": [
+              658,
+              1073,
+              1785,
+              1063,
+              1786,
+              1122,
+              658,
+              1126
+            ],
+            "text": "different rental instrument?",
+            "words": [
+              {
+                "boundingBox": [
+                  671,
+                  1081,
+                  1024,
+                  1078,
+                  1024,
+                  1126,
+                  672,
+                  1126
+                ],
+                "confidence": 0.598,
+                "text": "different"
+              },
+              {
+                "boundingBox": [
+                  1049,
+                  1077,
+                  1293,
+                  1074,
+                  1292,
+                  1126,
+                  1049,
+                  1126
+                ],
+                "confidence": 0.991,
+                "text": "rental"
+              },
+              {
+                "boundingBox": [
+                  1310,
+                  1073,
+                  1776,
+                  1064,
+                  1774,
+                  1123,
+                  1310,
+                  1126
+                ],
+                "confidence": 0.994,
+                "text": "instrument?"
+              }
+            ]
+          }
+        ],
+        "page": 1,
+        "unit": "pixel",
+        "width": 1817
+      }
+    ],
+    "version": "3.2.0"
+  },
+  "createdDateTime": "2022-12-20T14:17:12Z",
+  "lastUpdatedDateTime": "2022-12-20T14:17:13Z",
+  "status": "succeeded"
+}

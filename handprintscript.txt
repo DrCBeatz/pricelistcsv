@@ -1,0 +1,2 @@
+handprint -a microsoft myazurecredentials.json
+handprint -s microsoft s_collins.jpg -e
