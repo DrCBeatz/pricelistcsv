@@ -29,4 +29,4 @@ for name in names_list:
     print('\n')
 
 print(df)
-df.to_csv('draw.csv')
+df.to_csv('draw.csv', index=False)
