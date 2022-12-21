@@ -13,3 +13,8 @@ plc/migrations/*
 *.xml.bak
 *.zip
 myazurecredentials.json
+*.jpg
+*.HEIC
+*.json
+names_txt.py
+draw/
