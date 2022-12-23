@@ -1,3 +1,3 @@
 PRODUCT_SKUS = """
-YCL221II
+BCTD401
 """

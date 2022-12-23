@@ -1,8 +1,8 @@
 def main():
     import pandas as pd
 
-    PRODUCT_LIST = 'products_export (51).csv'
-    PRICE_LIST = 'products5.csv'
+    PRODUCT_LIST = 'products_export (53).csv'
+    PRICE_LIST = 'products6.csv'
     PRODUCT_LIST_SEARCH_FIELD = 'Variant SKU'
     PRICE_LIST_SEARCH_FIELD = 'model'
     PRODUCT_LIST_REPLACE_FIELD = 'Variant Price'
