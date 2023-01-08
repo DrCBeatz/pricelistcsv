@@ -12,9 +12,9 @@ def replace_file_text(string1, string2):
             print(line.replace(string1, string2), end='')
     return
 
-df = pd.read_csv('products_export (61).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
+df = pd.read_csv('products_export (65).csv', dtype={'Variant SKU':str, 'Variant Barcode':str, 'Variant Price':str, 'Variant Compare At Price':str})
 
-sale = True
+sale = False
 
 
 lbx_files = ['label.xml', 'prop.xml', 'Object0.bmp']
@@ -34,7 +34,7 @@ def main():
             shutil.copyfile(source_file, output_file)
 
             new_title = nth_repl_all(df.iloc[i]['Title'], " ", "\n", 2)
-            replace_file_text('[SKU]', df.iloc[i]['Variant SKU'])
+            replace_file_text('[SKU]', str(df.iloc[i]['Variant SKU']))
             replace_file_text('[VENDOR]', df.iloc[i]['Vendor'])
             replace_file_text(title_string, new_title)
             if sale:

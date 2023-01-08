@@ -1,9 +1,11 @@
 def main():
-    # script to make csv of Shopify products inactive
+    '''
+    script to make csv of Shopify products inactive
+    '''
     import pandas as pd
     import numpy as np
 
-    product_list = 'products_export (37).csv'
+    product_list = 'products_export (62).csv'
     df = pd.read_csv(product_list, dtype={'Variant SKU':str, 'Variant Barcode':str})
 
     df['Title'] = np.where(df['Title'].notna(), "Unavailable - " + df['Title'],  df['Title'])
