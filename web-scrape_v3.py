@@ -7,7 +7,7 @@ product_SKUs = PRODUCT_SKUS.split()
 
 columns = ['model', 'brand', 'title', 'price', 'description', 'url', 'image' ]
 
-output_file = 'products6.csv'
+output_file = 'remo_products.csv'
 
 df = pd.DataFrame(columns=columns)
 
