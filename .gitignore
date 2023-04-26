@@ -18,3 +18,4 @@ myazurecredentials.json
 *.json
 names_txt.py
 draw/
+.ipynb_checkpoints/*
